@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style type="text/css">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<style>
+			*:{
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				width: 100%;
+				margin:0;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			.searchbar{
+				width: 100%;
+				height: 8%;
+				text-align: center;
+			}
+			h1{
+				font-size: 28px;
+			}
+			.mui-control-content {
+				background-color: white;
+				min-height: 92%;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 33px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 44px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			.mui-slider-item.mui-control-content.mui-table-view{
+				width: 90%;
+			}
+			.passage
+			{
+				text-align: center;
+				margin:
+				height: 195px;
+				width:333px;
+				display:block;
+				font-size: 1.5rem;
+				border-radius:10px;
+				
+				
+			}
+			.mui-table-view img{
+				display: inline-block;
+				text-align: center;
+				margin: 18px;
+				height: 210px;
+				width:30px;
+				border-radius:10px;
+			}
+			.nav
+			{	
+				border-top: 1px solid #888888;
+				background: white;
+				position: fixed;
+				width: 100%;
+				height: 8%;
+			}
+			.nav img{
+			margin: 10px 0 0 30px;
+			
+			height: 30px;
+			width: 30px;
+		}
+		.mui-scroll ul{
+			width: 90%;
+		}
+		.paper {
+			display: inline-block;
+			background-color: #fffeff;
+			width: 25%;
+			height:3.75rem;
+			overflow: hidden;
+			clear: both;
+			margin: 0;
+		}
+		.paper:hover {
+		  cursor: pointer;
+		}
+		.ripple {
+		  background-color: rgba(0, 0, 0, 0.45);
+		  border-radius: 100%;
+		  height: 30px;
+		  width: 30px;
+		  margin-top: -30px;
+		  position: relative;
+		  -webkit-transform: scale(0);
+		  transform: scale(0);
+		}
+		.animate {
+		  -webkit-animation: ripple 0.4s linear;
+		  animation: ripple 0.4s linear;
+		}
+		@-webkit-keyframes ripple {
+		  100% {
+		    -webkit-transform: scale(12);
+		    transform: scale(12);
+		    background-color: transparent;
+		  }
+		}
+		@keyframes ripple {
+		  100% {
+		    -webkit-transform: scale(12);
+		    transform: scale(12);
+		    background-color: transparent;
+		  }
+		}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/feedback.css" />
+	</head>
+
+	<body>
+		<script src="js/mui.js"></script>
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<div id="setting" class="mui-page">
+			<!--页面标题栏开始-->
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<div class="searchbar">
+					 <h1>主页<a id="turnToSearch" href="#searchPage" class="mui-icon mui-icon-search" style="color: #000000;top: -13px;float: right;font-size: 40px;"></a></h1>
+				</div>	
+			</div>
+			<!--页面标题栏结束-->
+			<!--页面主内容区开始-->
+			<div class="mui-page-content">
+			<div id="main" class="mui-control-content mui-active">
+					<div id="slider" class="mui-slider mui-fullscreen">
+						<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<div class="mui-scroll">
+								<a class="mui-control-item mui-active" href="#item1mobile">
+									推荐
+								</a>
+								<a class="mui-control-item" href="#item2mobile">
+									科学
+								</a>
+								<a class="mui-control-item" href="#item3mobile">
+									社会
+								</a>
+								<a class="mui-control-item" href="#item4mobile">
+									经济
+								</a>
+								<a class="mui-control-item" href="#item5mobile">
+									文化
+								</a>
+								<a class="mui-control-item" href="#item6mobile">
+									教育
+								</a>
+								<a class="mui-control-item" href="#item7mobile">
+									政治
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-group">
+							<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+								<div id="scroll1" class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<a href="#readPage" id="img1"><img src="images/muwu.jpg" /></a>
+											<a href="#readPage"><img onclick="hidenav()" src="images/muwu.jpg" /></a>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item2mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<a href="#readPage"><img src="images/cbd.jpg" /></a>
+											<a href="#readPage"><img src="images/cbd.jpg" /></a>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item3mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<a href="#readPage"><img src="images/shuijiao.jpg" /></a>
+											<a href="#readPage"><img src="images/shuijiao.jpg" /></a>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item4mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<a href="#readPage"><img src="images/yuantiao.jpg" /></a>
+											<a href="#readPage"><img src="images/yuantiao.jpg" /></a>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item5mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<a href="#readPage"><img src="images/muwu.jpg" /></a>
+											<a href="#readPage"><img src="images/shuijiao.jpg" /></a>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item6mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<a href="#readPage"><img src="images/yuantiao.jpg" /></a>
+											<a href="#readPage"><img src="images/shuijiao.jpg" /></a>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item7mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<a href="#readPage"><img src="images/muwu.jpg" /></a>
+											<a href="#readPage"><img src="images/cbd.jpg" /></a>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div id="star" class="mui-control-content">
+				<div id="slider" class="mui-slider mui-fullscreen">
+					收藏
+				</div>
+			</div>
+			<div id="notes" class="mui-control-content">
+				<div id="slider" class="mui-slider mui-fullscreen">
+					通知
+				</div>
+			</div>
+			<div id="user" class="mui-control-content">
+				<div id="slider" class="mui-slider mui-fullscreen">
+					我的
+				</div>
+			</div>
+			<nav id="nav" class="nav">
+				<div id="p1" class="paper">
+					<div class="ripple">
+					</div>
+					<img id="tabicon1" src="images/ac-main.png"/> 
+				</div><div id="p2" class="paper">
+					<div class="ripple">
+					</div>
+					<img id="tabicon2" src="images/star.png"/> 
+				</div><div id="p3" class="paper">
+					<div class="ripple">
+					</div>
+					<img id="tabicon3" src="images/notify.png"/> 
+				</div><div id="p4" class="paper">
+					<div class="ripple">
+					</div>
+					<img id="tabicon4" src="images/user.png"/> 
+				</div>
+			</nav>
+			</div>
+			<!--页面主内容区结束-->
+		</div>
+		<div id="searchPage" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>主页
+				</button>
+				<h1 class="mui-center mui-title">搜索</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-content mui-scroll-wrapper" style="background: white;">
+					<div class="mui-button-row">
+						<input type="search" placeholder="输入自己感兴趣的话题~" style="width: 300px;display:inline-block;text-align: center;"/>
+						<span class="mui-icon mui-icon-search" style="color: #000000"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="readPage" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>主页
+				</button>
+				<h1 class="mui-center mui-title">阅读</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+						
+								文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+								文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+								文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+								文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+								文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/mui.pullToRefresh.js"></script>
+	<script src="js/mui.pullToRefresh.material.js"></script>
+	<script src="js/mui.view.js "></script>
+	<script src='js/feedback.js'></script>
+	<script type="text/javascript">
+	mui.init();
+	$(document).ready(function() {
+	  $(".paper").mousedown(function(e) {
+		var activeTab;
+		var activeBodies;
+		var targetBody;
+		var className = 'mui-active';
+		var classSelector = '.' + className;
+		var CLASS_CONTROL_CONTENT = 'mui-control-content';	 
+		if(this.id=='p1'){
+			targetBody = document.getElementById("main");
+			document.getElementById("tabicon1").setAttribute("src","images/ac-main.png");
+			document.getElementById("tabicon2").setAttribute("src","images/star.png");
+			document.getElementById("tabicon3").setAttribute("src","images/notify.png");
+			document.getElementById("tabicon4").setAttribute("src","images/user.png");
+		}
+		else if(this.id=='p2'){
+			targetBody = document.getElementById("star");
+			document.getElementById("tabicon2").setAttribute("src","images/ac-star.png");
+			document.getElementById("tabicon1").setAttribute("src","images/main.png");
+			document.getElementById("tabicon3").setAttribute("src","images/notify.png");
+			document.getElementById("tabicon4").setAttribute("src","images/user.png");
+		}
+		else if(this.id=='p3'){
+		 	targetBody = document.getElementById("notes");
+			document.getElementById("tabicon3").setAttribute("src","images/ac-notify.png");
+			document.getElementById("tabicon2").setAttribute("src","images/star.png");
+			document.getElementById("tabicon1").setAttribute("src","images/main.png");
+			document.getElementById("tabicon4").setAttribute("src","images/user.png");
+		 }
+		else{
+			targetBody = document.getElementById("user");
+			document.getElementById("tabicon4").setAttribute("src","images/ac-user.png");
+			document.getElementById("tabicon2").setAttribute("src","images/star.png");
+			document.getElementById("tabicon3").setAttribute("src","images/notify.png");
+			document.getElementById("tabicon1").setAttribute("src","images/main.png");
+		}
+		if (!targetBody) {
+		    return;
+		}
+		var parentNode = targetBody.parentNode;
+		activeBodies = parentNode.querySelectorAll('.' + CLASS_CONTROL_CONTENT + classSelector);
+		for (var i = 0; i < activeBodies.length; i++) {
+		    var activeBody = activeBodies[i]; 
+		    activeBody.parentNode === parentNode && activeBody.classList.remove(className);
+		}
+		targetBody.classList.add(className);
+		var contents = [];
+		var _contents = parentNode.querySelectorAll('.' + CLASS_CONTROL_CONTENT);
+		for (var i = 0; i < _contents.length; i++) { //查找直属子节点
+		    _contents[i].parentNode === parentNode && (contents.push(_contents[i]));
+		}
+		e.detail && e.detail.gesture.preventDefault(); //fixed hashchange
+		//viewApi.go("#user");
+	    var ripple = $(this).find(".ripple");
+	    ripple.removeClass("animate");
+	    var x = parseInt(e.pageX - $(this).offset().left) - (ripple.width() / 2);
+	    var y = parseInt(e.pageY - $(this).offset().top) - (ripple.height() / 2);
+	    ripple.css({
+	      top: y,
+	      left: x
+	    }).addClass("animate");
+	  });
+	});
+	//初始化单页view
+	var viewApi = mui('#app').view({
+		defaultPage: '#setting'
+	});
+	//初始化单页的区域滚动
+	mui('.mui-scroll-wrapper').scroll({
+		indicators: false
+	});
+	var view = viewApi.view;
+	(function($) {
+		//处理view的后退与webview后退
+		var oldBack = $.back;
+		$.back = function() {
+			if (viewApi.canBack()) { //如果view可以后退，则执行view的后退
+				viewApi.back();
+			} else { //执行webview后退
+				oldBack();
+			}
+		};
+	})(mui);
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios?0.003:0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: false, //是否显示滚动条
+					deceleration:deceleration
+				});
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var myParent = self.element.querySelector('.mui-table-view');
+										var myImage = document.createElement("img");
+										var a = document.createElement("a");
+										a.setAttribute("href","#readPage");
+										myImage.src = 'images/muwu.jpg';
+										myParent.appendChild(a);
+										a.appendChild(myImage);
+										self.endPullDownToRefresh();
+									}, 500);
+								}
+							},
+							up: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										for (var i = 0; i < 2; i++) {
+											var myParent =  self.element.querySelector('.mui-table-view');
+											var myImage = document.createElement("img");
+											var a = document.createElement("a");
+											a.setAttribute("href","#readPage");
+											myImage.src = 'images/muwu.jpg';
+											myParent.appendChild(a);
+											a.appendChild(myImage);
+											
+										}
+										self.endPullUpToRefresh();
+									}, 500);
+								}
+							}
+						});
+					});
+				});
+			})(mui);
+	</script>
+</html>
